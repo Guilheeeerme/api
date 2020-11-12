@@ -1,9 +1,11 @@
-import express from "express";
+const express = require("express");
+const routes = require("./routes/index");
+
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("Hello World"));
+app.use("/", routes);
 
-export default app;
+module.exports = app;
