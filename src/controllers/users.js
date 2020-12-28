@@ -46,7 +46,7 @@ class UsersController {
       }
 
       await user.save();
-      res.sendStatus(users);
+      res.sendStatus(200);
     } catch (error) {
       res.status(422).send(error.message);
     }
