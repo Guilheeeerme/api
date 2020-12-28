@@ -10,4 +10,4 @@ class ProductsController {
   }
 }
 
-module.exports = ProductsController;
+module.exports = new ProductsController();
