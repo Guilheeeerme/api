@@ -11,6 +11,7 @@ const db = require("../src/config/database");
     console.log("Connected to the database");
   } catch (error) {
     console.log("Database connection error" + error);
+    process.exit(1);
   }
 })();
 
