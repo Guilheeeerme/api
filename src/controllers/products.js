@@ -1,6 +1,6 @@
 class ProductsController {
-  constructor(product) {
-    this.Product = product;
+  constructor(Product) {
+    this.Product = Product;
   }
 
   async get(req, res) {

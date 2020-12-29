@@ -1,11 +1,11 @@
 class UsersController {
-  constructor(user) {
-    this.user = user;
+  constructor(User) {
+    this.User = User;
   }
 
   async get(req, res) {
     try {
-      const users = await this.user.find({});
+      const users = await this.User.find({});
       res.send(users);
     } catch (error) {
       res.status(400).send(error.message);
@@ -15,7 +15,7 @@ class UsersController {
   async getById(req, res) {
     const { id } = req.params;
     try {
-      const user = await this.user.find({ _id: id });
+      const user = await this.User.find({ _id: id });
       res.send(user);
     } catch (error) {
       res.status(400).send(error.message);
@@ -23,7 +23,7 @@ class UsersController {
   }
 
   async create(req, res) {
-    const user = new this.user(req.body);
+    const user = new this.User(req.body);
     try {
       await user.save();
       res.status(201);
@@ -35,7 +35,7 @@ class UsersController {
   async update(req, res) {
     const body = req.body;
     try {
-      const user = await this.user.findById(req.params.id);
+      const user = await this.User.findById(req.params.id);
 
       user.name = body.name;
       user.email = body.email;
@@ -54,7 +54,7 @@ class UsersController {
 
   async remove(req, res) {
     try {
-      await this.user.deleteOne({ _id: req.params.id });
+      await this.User.deleteOne({ _id: req.params.id });
       res.sendStatus(204);
     } catch (error) {
       res.status(400).send(error.message);
