@@ -13,7 +13,7 @@ const schema = new mongoose.Schema({
 
 // O this nesse contexto se refere ao Model do Mongoose
 schema.pre("save", async function (next) {
-  if (!this.password || this.isModified("password")) {
+  if (!this.password || !this.isModified("password")) {
     return next();
   }
   try {
@@ -26,9 +26,10 @@ schema.pre("save", async function (next) {
 
 schema.set("toJSON", {
   transform: (doc, ret, options) => ({
+    // Esses dados que vem no GET
     _id: ret._id,
-    email: ret.email,
     name: ret.name,
+    email: ret.email,
     role: ret.role,
   }),
 });

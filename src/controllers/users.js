@@ -26,7 +26,7 @@ class UsersController {
     const user = new this.User(req.body);
     try {
       await user.save();
-      res.status(201);
+      res.status(201).send(user);
     } catch (error) {
       res.status(422).send(error.message);
     }
